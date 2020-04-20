@@ -14,4 +14,20 @@ const getTeamById = (request, response) => {
     : response.sendStatus(404)
 }
 
-module.exports = { getAllTeams, getTeamById }
+const createNewTeam = (request, response) => {
+
+  const {id, location, mascot, abbreviation, conference, division } = request.body
+
+if (!id || !location || !mascot || !abbreviation || !conference || !division) {
+  
+    return response.status(400).send(' Please provide id, location, mascot, abbreviation, conference, and division')
+}
+   const newTeam = { id, location, mascot, abbreviation, conference, division }
+   
+   teams.push(newTeam)
+   
+   return response.status(201).send(newTeam)
+   }
+  
+
+module.exports = { getAllTeams, getTeamById, createNewTeam }
